@@ -95,7 +95,8 @@ async function init() {
         console.log(newIntern);
       }
     });
-    render(employees);
+    const renderEmployee = render(employees);
+    fs.writeFile(outputPath, renderEmployee, () => console.log("SUCCESS!"));
   } catch (err) {
     throw err;
   }
