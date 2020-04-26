@@ -1,0 +1,13 @@
+.team-heading {
+  background-color: rosybrown;
+  color: whitesmoke;
+}
+
+.employee-card {
+  margin: 20px;
+}
+
+.card-header {
+  background-color: teal;
+  color: whitesmoke;
+}
