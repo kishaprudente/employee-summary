@@ -4,10 +4,10 @@ const Intern = require("./lib/Intern");
 const path = require("path");
 const fs = require("fs");
 const inquirer = require("inquirer");
+const render = require("./lib/htmlRenderer");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-const render = require("./lib/htmlRenderer");
 
 const questions = [
   {
@@ -84,21 +84,19 @@ async function init() {
       if (role === "Manager") {
         const newManager = new Manager(name, id, email, officeNumber);
         employees.push(newManager);
-        console.log(newManager);
       } else if (role === "Engineer") {
         const newEngineer = new Engineer(name, id, email, github);
         employees.push(newEngineer);
-        console.log(newEngineer);
       } else {
         const newIntern = new Intern(name, id, email, school);
         employees.push(newIntern);
-        console.log(newIntern);
       }
     });
+
     const renderEmployee = render(employees);
     fs.writeFile(outputPath, renderEmployee, () => console.log("SUCCESS!"));
   } catch (err) {
-    throw err;
+    throw new Error(err);
   }
 }
 
