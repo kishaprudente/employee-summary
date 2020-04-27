@@ -68,7 +68,7 @@ const questions = [
   },
 ];
 
-// helper function to recursively prompt the inquirer if user wants to add more employees.
+// helper function to recursively prompt the user to add more employees.
 async function createEmployees(employeesInput = []) {
   try {
     const { again, ...answers } = await inquirer.prompt(questions);
@@ -95,12 +95,12 @@ async function init() {
         // push newManager object to employees array
         employees.push(newManager);
       } else if (role === "Engineer") {
-        // push newEngineer object to employees array
         const newEngineer = new Engineer(name, id, email, github);
+        // push newEngineer object to employees array
         employees.push(newEngineer);
       } else {
-        // push newIntern object to employees array
         const newIntern = new Intern(name, id, email, school);
+        // push newIntern object to employees array
         employees.push(newIntern);
       }
     });
